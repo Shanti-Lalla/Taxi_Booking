@@ -1,0 +1,40 @@
+import sqlite3
+
+
+def first_run():
+    conn = sqlite3.connect('Taxi_Bookings.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS Admin''')
+    c.execute('''ALTER TABLE ADD COLUMN Admin_Id INTEGER PRIMARY KEY ''')
+    c.execute('''ALTER TABLE ADD COLUMN First_Name TEXT 30''')
+    c.execute('''ALTER TABLE ADD COLUMN Last_Name TEXT 30''' )
+    c.execute('''ALTER TABLE ADD COLUMN Phone_Number TEXT 30''' )
+    c.execute('''ALTER TABLE ADD COLUMN Email_Address TEXT 120''' )
+    c.execute('''ALTER TABLE ADD COLUMN Password TEXT 30''' )
+
+    c.execute('''CREATE TABLE IF NOT EXISTS Booking_Details''')
+    c.execute('''ALTER TABLE ADD COLUMN Booking_Id INTEGER PRIMARY KEY ''')
+    c.execute('''ALTER TABLE ADD COLUMN Pickup_Address TEXT 30''')
+    c.execute('''ALTER TABLE ADD COLUMN Dropoff_Address TEXT 30''' )
+    c.execute('''ALTER TABLE ADD COLUMN Pickup_Date TEXT 30''' )
+    c.execute('''ALTER TABLE ADD COLUMN Pickup_Time TEXT 30''' )
+    c.execute('''ALTER TABLE ADD COLUMN Dropoff_Time TEXT 30''' )
+
+    c.execute('''CREATE TABLE IF NOT EXISTS Customer''')
+    c.execute('''ALTER TABLE ADD COLUMN Customer_Id INTEGER PRIMARY KEY ''')
+    c.execute('''ALTER TABLE ADD COLUMN First_Name TEXT 30''')
+    c.execute('''ALTER TABLE ADD COLUMN Phone_Number TEXT 30''' )
+    c.execute('''ALTER TABLE ADD COLUMN Email_Address TEXT 120''' )
+    c.execute('''ALTER TABLE ADD COLUMN Password TEXT 30''' )
+    c.execute('''ALTER TABLE ADD COLUMN Payment_Method TEXT 30''' )
+    c.execute('''ALTER TABLE ADD COLUMN Credit_Card_Number INTEGER 16''' )
+
+    c.execute('''CREATE TABLE IF NOT EXISTS Driver''')
+    c.execute('''ALTER TABLE ADD COLUMN Driver_Id INTEGER PRIMARY KEY ''')
+    c.execute('''ALTER TABLE ADD COLUMN First_Name TEXT 30''')
+    c.execute('''ALTER TABLE ADD COLUMN Last_Name TEXT 30''' )
+    c.execute('''ALTER TABLE ADD COLUMN Phone_Number TEXT 30''' )
+    c.execute('''ALTER TABLE ADD COLUMN Email_Address TEXT 120''' )
+    c.execute('''ALTER TABLE ADD COLUMN Password TEXT 30''' )
+    conn.commit()
+    conn.close()
